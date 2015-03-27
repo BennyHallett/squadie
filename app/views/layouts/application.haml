@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+%html
+  %head
+    %title Football coaching software. Soccer coaching software | Squadie
+    = stylesheet_link_tag('application', { :media => 'all', 'data-turbolinks-track' => true } )
+    = javascript_include_tag('application', 'data-turbolinks-track' => true)
+    = csrf_meta_tags
+    %link{href: 'http://fonts.googleapis.com/css?family=Open+Sans|Oswald', rel: 'stylesheet', type: 'text/css'}
+
+  %body
+    %nav.navbar.navbar-inverse.navbar-fixed-top
+      .container-fluid
+        .navbar-header
+          %button.navbar-toggle.collapsed{ type: 'button', aria: { expanded: 'false', controls: 'navbar' }, data: { toggle: 'collapse', target: '#navbar' } }
+            %span.sr-only Toggle Navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+
+          %a.navbar-brand{ href: '/' } Squadie
+
+        #navbar.navbar-collapse.collapse
+          %ul.nav.navbar-nav.navbar-right
+            %li.navbar-text
+              %p.navbar-text
+              Login:
+            %li
+              %a{ href: '/auth/twitter' }
+                %i.glyphicon.glyphicon-fire
+            %li
+              %a{ href: '/auth/google_oauth2' }
+                %i.glyphicon.glyphicon-heart
+            %li
+              %a{ href: '/auth/facebook' }
+                %i.glyphicon.glyphicon-thumbs-up
+
+    .container-fluid
+      .row
+        = yield
