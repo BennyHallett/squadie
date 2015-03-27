@@ -10,8 +10,8 @@ class User < ActiveRecord::Base
   end
 
   def self.do_create(auth_hash)
-    a = auth_hash.slice(:provider, :uid, :name, :image)
-    self.create(oauth_provider: a[:provider], oauth_uid: a[:uid], name: a[:name], avatar_url: a[:image])
+    a = auth_hash.slice(:provider, :uid, :info)
+    self.create(oauth_provider: a[:provider], oauth_uid: a[:uid], name: a[:info][:name], avatar_url: a[:info][:image])
   end
 
 end
