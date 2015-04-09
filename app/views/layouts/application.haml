@@ -21,18 +21,28 @@
 
         #navbar.navbar-collapse.collapse
           %ul.nav.navbar-nav.navbar-right
-            %li.navbar-text
-              %p.navbar-text
-              Login:
-            %li
-              %a{ href: '/auth/twitter' }
-                %i.glyphicon.glyphicon-fire
-            %li
-              %a{ href: '/auth/google_oauth2' }
-                %i.glyphicon.glyphicon-heart
-            %li
-              %a{ href: '/auth/facebook' }
-                %i.glyphicon.glyphicon-thumbs-up
+            - if current_user
+              %li
+                %p.navbar-text
+                  = current_user.name
+                .navbar-brand
+                  %img{ src: current_user.avatar_url }
+              %li
+                %a{ href: '/logout' }
+                  Logout
+            - else
+              %li.navbar-text
+                %p.navbar-text
+                Login:
+              %li
+                %a{ href: '/auth/twitter' }
+                  %i.glyphicon.glyphicon-fire
+              %li
+                %a{ href: '/auth/google_oauth2' }
+                  %i.glyphicon.glyphicon-heart
+              %li
+                %a{ href: '/auth/facebook' }
+                  %i.glyphicon.glyphicon-thumbs-up
 
     .container-fluid
       .row
