@@ -22,27 +22,34 @@
         #navbar.navbar-collapse.collapse
           %ul.nav.navbar-nav.navbar-right
             - if current_user
-              %li
+              %li#nav-user-details
                 %p.navbar-text
                   = current_user.name
                 .navbar-brand
                   %img{ src: current_user.avatar_url }
-              %li
+              %li#nav-logout
                 %a{ href: '/logout' }
                   Logout
             - else
               %li.navbar-text
                 %p.navbar-text
                 Login:
-              %li
+              %li.social-login
                 %a{ href: '/auth/twitter' }
                   %i.glyphicon.glyphicon-fire
-              %li
+              %li.social-login
                 %a{ href: '/auth/google_oauth2' }
                   %i.glyphicon.glyphicon-heart
-              %li
+              %li.social-login
                 %a{ href: '/auth/facebook' }
                   %i.glyphicon.glyphicon-thumbs-up
+
+        - if current_user
+          .user-bar
+            %ul.nav.navbar-nav.navbar-center
+              %ul
+                %li
+                  %a{ href: '/players' } Players
 
     .container-fluid
       .row

@@ -12,8 +12,8 @@ class SessionControllerTest < ActionController::TestCase
 
     assert_equal @twitter_hash[:provider], user.oauth_provider
     assert_equal @twitter_hash[:uid], user.oauth_uid
-    assert_equal @twitter_hash[:name], user.name
-    assert_equal @twitter_hash[:image], user.avatar_url
+    assert_equal @twitter_hash[:info][:name], user.name
+    assert_equal @twitter_hash[:info][:image], user.avatar_url
   end
 
   test "log out" do

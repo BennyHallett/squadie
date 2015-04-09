@@ -13,8 +13,8 @@ class UserTest < ActiveSupport::TestCase
 
     assert_equal @twitter_hash[:provider], user.oauth_provider
     assert_equal @twitter_hash[:uid], user.oauth_uid
-    assert_equal @twitter_hash[:name], user.name
-    assert_equal @twitter_hash[:image], user.avatar_url
+    assert_equal @twitter_hash[:info][:name], user.name
+    assert_equal @twitter_hash[:info][:image], user.avatar_url
 
     assert_equal 3, User.count
   end
@@ -26,8 +26,8 @@ class UserTest < ActiveSupport::TestCase
     user = User.find_or_create(@twitter_hash)
     assert_equal @twitter_hash[:provider], user.oauth_provider
     assert_equal @twitter_hash[:uid], user.oauth_uid
-    assert_equal @twitter_hash[:name], user.name
-    assert_equal @twitter_hash[:image], user.avatar_url
+    assert_equal @twitter_hash[:info][:name], user.name
+    assert_equal @twitter_hash[:info][:image], user.avatar_url
 
     assert_equal 3, User.count
   end

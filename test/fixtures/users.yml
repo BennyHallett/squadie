@@ -2,12 +2,14 @@ ben: {
   oauth_provider: 'twitter',
   oauth_uid: '12345678',
   name: 'Benny Hallett',
-  avatar_url: 'http://localhost:3000/assets/test.img'
+  avatar_url: 'http://localhost:3000/assets/test.img',
+  id: 1
 }
 
 ollie: {
   oauth_provider: 'facebook',
   oauth_uid: '87654321',
   name: 'Ollie Hallett',
-  avatar_url: 'http://localhost:3000/assets/test.img'
+  avatar_url: 'http://localhost:3000/assets/test.img',
+  id: 2
 }
