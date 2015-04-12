@@ -12,8 +12,10 @@ class SessionController < ApplicationController
     redirect_to '/'
   end
 
-  protected
+  def login
+  end
 
+  protected
   def auth_hash
     request.env['omniauth.auth']
   end

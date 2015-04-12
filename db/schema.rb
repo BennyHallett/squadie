@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150325213309) do
+ActiveRecord::Schema.define(version: 20150409224641) do
+
+  create_table "players", force: :cascade do |t|
+    t.string   "name"
+    t.string   "position"
+    t.date     "dob"
+    t.integer  "goals"
+    t.integer  "assists"
+    t.integer  "red_cards"
+    t.integer  "yellow_cards"
+    t.integer  "user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "players", ["user_id"], name: "index_players_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "oauth_provider"

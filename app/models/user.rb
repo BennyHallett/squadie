@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
 
+  has_many :players
+
   def self.find_or_create(auth_hash)
     do_find(auth_hash) || do_create(auth_hash)
   end

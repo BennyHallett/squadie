@@ -20,5 +20,6 @@ group :development, :test do
   gem 'spring'
   gem 'dotenv-rails'
   gem 'mocha'
+  gem 'factory_girl_rails', '~> 4.0'
 end
 

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  dob: 2015-04-10
+  goals: 1
+  assists: 1
+  red_cards: 1
+  yellow_cards: 1
+
+two:
+  name: MyString
+  dob: 2015-04-10
+  goals: 1
+  assists: 1
+  red_cards: 1
+  yellow_cards: 1

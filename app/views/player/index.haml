@@ -1,0 +1,23 @@
+%ul.players
+  %li.player
+    %a.add_player{ data: { toggle: 'modal', target: '#add_player_modal' } }
+      Add Player
+  - @players.each do |p|
+    %li.player
+      %span.player_name= p.name
+
+#add_player_modal.modal.fade{ tabindex: '-1', role: 'dialog', aria: { labelledby: 'add_player_label', hidden: true } }
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{ type: 'button', data: { dismiss: 'modal' }, aria: { label: 'Close' } }
+          %span{ aria: { hidden: true } }
+            &times;
+        %h4#add_player_label.modal-title Add Player
+      .modal-body
+        %h5 GOGO
+      .modal-footer
+        %button.btn.btn-default{ type: 'button', data: { dismiss: 'modal' } }
+          Close
+        %button.btn.btn-primary{ type: 'button', }
+          Add
