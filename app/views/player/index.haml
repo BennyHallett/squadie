@@ -1,10 +1,26 @@
-%ul.players
-  %li.player
+.players
+  .col-md-8
+    - @players.in_groups_of(2) do |g|
+      .row
+        - g.each do |p|
+          .col-md-6.player
+            %span.player_name= p.name
+            %span.pull-right
+              %i.fa.fa-ban
+              %i.fa.fa-plane
+              %i.fa.fa-ambulance
+              %i.fa.fa-star
+              %i.fa.fa-money
+
+  .col-md-4
     %a.add_player{ data: { toggle: 'modal', target: '#add_player_modal' } }
+      %i.fa.fa-user-plus
       Add Player
-  - @players.each do |p|
-    %li.player
-      %span.player_name= p.name
+
+  .col-md-4
+    .something
+
+
 
 #add_player_modal.modal.fade{ tabindex: '-1', role: 'dialog', aria: { labelledby: 'add_player_label', hidden: true } }
   .modal-dialog

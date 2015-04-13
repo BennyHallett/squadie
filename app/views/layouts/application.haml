@@ -44,20 +44,35 @@
                 %a{ href: '/auth/facebook' }
                   %i.fa.fa-2x.fa-facebook-official
 
-    - if current_user
-      .user-bar
-        %ul.nav.nav-pills.nav-justified
-          %li
-            %a{ href: '/players' } Players
-          %li
-            %a{ href: '/calendar' } Calendar
-          %li
-            %a{ href: '/matches' } Matches
-          %li
-            %a{ href: '/squads' } Squads
-          %li
-            %a{ href: '/animator' } Animator
+    .container
+      - if current_user
+        .user-bar
+          %ul.nav.nav-tabs.nav-justified
+            %li.active
+              %a{ href: '/players' }
+                %i.fa.fa-user
+                %br
+                Players
+            %li
+              %a{ href: '/calendar' }
+                %i.fa.fa-calendar
+                %br
+                Calendar
+            %li
+              %a{ href: '/matches' }
+                %i.fa.fa-soccer-ball-o
+                %br
+                Matches
+            %li
+              %a{ href: '/squads' }
+                %i.fa.fa-group
+                %br
+                Squads
+            %li
+              %a{ href: '/animator' }
+                %i.fa.fa-arrows
+                %br
+                Animator
 
-    .container-fluid
       .row
         = yield

@@ -34,7 +34,7 @@ class PlayerControllerTest < ActionController::TestCase
     get :index
 
     assert_response :success
-    assert_select '.player', 5 # One Extra for the addition
+    assert_select '.player', 4
     assert_select '.player_name' do |elements|
       assert_equal 0, elements.count { |e| e.content == 'Another Player' }
     end
