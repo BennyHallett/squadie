@@ -47,7 +47,7 @@ class PlayerControllerTest < ActionController::TestCase
     assert_select 'a.add_player', 1
   end
 
-  # TODO:
+  # TODO: index
   # * Should show interaction buttons (injured, what else)?
   # * Should show status icons
   #   * Position
@@ -58,4 +58,37 @@ class PlayerControllerTest < ActionController::TestCase
   #   * Yellows
   #  == These 2 above might be the same things
   # * Make it not look shit
+
+  test 'add player' do
+    session['user_id'] = @user.id
+    post :add, { name: 'New Player', position: 'CAM', dob: '01/01/1990' }
+
+    assert_response :success
+    body = JSON.parse @response.body
+    assert_equal 'New Player was added to your team.', body['message']
+    assert_equal 'New Player', body['player']['name']
+    assert_equal '01/01/1990', body['player']['dob']
+    assert_equal 'CAM', body['player']['position']
+    assert_equal 5, @user.players.count
+  end
+
+  test 'add player when date doesnt parse' do
+    session['user_id'] = @user.id
+    post :add, { name: 'New Player', position: 'CAM', dob: 'abcdef' }
+
+    assert_response 400
+    body = JSON.parse @response.body
+    assert_equal 'An error occurred. Please provide a valid date of birth.', body['message']
+
+  end
+
+  test 'random error is thrown' do
+    Player.expects(:create).raises(StandardError)
+    session['user_id'] = @user.id
+    post :add, { name: 'New Player', position: 'CAM', dob: '01/01/1990' }
+
+    assert_response 500
+    body = JSON.parse @response.body
+    assert_equal 'An unknown error occurred. Please try again.', body['message']
+  end
 end

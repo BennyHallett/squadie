@@ -29,9 +29,18 @@
         %button.close{ type: 'button', data: { dismiss: 'modal' }, aria: { label: 'Close' } }
           %span{ aria: { hidden: true } }
             &times;
+        %i.fa.fa-user-plus
         %h4#add_player_label.modal-title Add Player
       .modal-body
-        %h5 GOGO
+        = form_tag('/player/add', method: 'post', class: 'form-horizontal') do
+          .form-group
+            = label_tag(:name, 'Player name:', class: 'col-md-3 control-label')
+            .col-md-9
+              = text_field_tag(:name, '', class: 'form-control')
+          .form-group
+            = label_tag(:position, 'Position:', class: 'col-md-3 control-label')
+            .col-md-9
+              = select_tag(:position, options_for_select(['ST', 'RW', 'LW', 'CAM']))
       .modal-footer
         %button.btn.btn-default{ type: 'button', data: { dismiss: 'modal' } }
           Close
