@@ -61,7 +61,7 @@ class PlayerControllerTest < ActionController::TestCase
 
   test 'add player' do
     session['user_id'] = @user.id
-    post :add, { name: 'New Player', position: 'CAM', dob: '01/01/1990' }
+    post :add, { name: 'New Player', position: 'CAM', dob: ['01/01/1990'] }
 
     assert_response :success
     body = JSON.parse @response.body
@@ -74,7 +74,7 @@ class PlayerControllerTest < ActionController::TestCase
 
   test 'add player when date doesnt parse' do
     session['user_id'] = @user.id
-    post :add, { name: 'New Player', position: 'CAM', dob: 'abcdef' }
+    post :add, { name: 'New Player', position: 'CAM', dob: ['abcdef'] }
 
     assert_response 400
     body = JSON.parse @response.body
@@ -85,7 +85,7 @@ class PlayerControllerTest < ActionController::TestCase
   test 'random error is thrown' do
     Player.expects(:create).raises(StandardError)
     session['user_id'] = @user.id
-    post :add, { name: 'New Player', position: 'CAM', dob: '01/01/1990' }
+    post :add, { name: 'New Player', position: 'CAM', dob: ['01/01/1990'] }
 
     assert_response 500
     body = JSON.parse @response.body

@@ -7,12 +7,12 @@ class PlayerController < ApplicationController
   end
 
   def add
-    dob = Date.parse(params['dob']) rescue nil
+    dob = Date.parse(params['dob'][0]) rescue nil
 
     # TODO: Move this create logic
     if dob
       begin
-        player = Player.create(name: params['name'], position: params['position'], dob: Date.parse(params['dob']))
+        player = Player.create(name: params['name'], position: params['position'], dob: Date.parse(params['dob'][0]))
         current_user.players << player
         current_user.save
 
@@ -24,6 +24,8 @@ class PlayerController < ApplicationController
       render json: { message: 'An unknown error occurred. Please try again.' }, status: :internal_server_error
       end
     else
+      logger.debug "Invalid date of birth provided"
+
       render json: { message: 'An error occurred. Please provide a valid date of birth.' }, status: :bad_request
     end
   end

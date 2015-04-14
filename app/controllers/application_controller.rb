@@ -5,7 +5,13 @@ class ApplicationController < ActionController::Base
 
   private
   def current_user
-    @current_user ||= User.find(session['user_id']) if session['user_id']
+    if Rails.env == 'development'
+      session['user_id'] = 1
+      @current_user ||= User.find(1)
+    else
+      @current_user ||= User.find(session['user_id']) if session['user_id']
+    end
+
   end
 
   def current_user=(user)
