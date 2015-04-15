@@ -4,12 +4,15 @@
 
 $(document).ready ->
   $("#add_player_form").on("ajax:beforeSend", (xhr, settings) ->
-    $("#add_player_message").innerHTML = ""
+    $("#add_player_message").text("")
     $("#add_player_message").addClass("hidden").removeClass("alert-success alert-danger"))
-  $("#add_player_form").on("ajax:error", (e, data, status, xhr) ->
-    $("#add_player_message").innerHTML = data.message
+  $("#add_player_form").on("ajax:error", (e, xhr, status, error) ->
+    $("#add_player_message").text(xhr.responseText)
     $("#add_player_message").removeClass("hidden").addClass("alert-danger"))
   $("#add_player_form").on("ajax:success", (e, data, status, xhr) ->
-    $("#add_player_message").innerHTML = data.message
-    $("#add_player_message").remove_class('hidden').addClass("alert-success"))
-
+    $("#add_player_message").text(data.message)
+    $("#add_player_message").removeClass('hidden').addClass("alert-success")
+    $("#player_name_field").val("")
+    first = $("#player_position_field option:first").val()
+    $("#player_position_field").val(first)
+    $("#player_dob_field").val(""))

@@ -21,12 +21,12 @@ class PlayerController < ApplicationController
       rescue StandardError => e
         logger.error "An error occurred while adding player with params #{params.inspect} to user: #{current_user.id}. Error was #{e}"
 
-      render json: { message: 'An unknown error occurred. Please try again.' }, status: :internal_server_error
+      render plain: 'An unknown error occurred. Please try again.', status: :internal_server_error
       end
     else
       logger.debug "Invalid date of birth provided"
 
-      render json: { message: 'An error occurred. Please provide a valid date of birth.' }, status: :bad_request
+      render plain: 'An error occurred. Please provide a valid date of birth.', status: :bad_request
     end
   end
 

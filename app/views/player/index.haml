@@ -34,15 +34,15 @@
           .form-group
             = label_tag(:name, 'Player name:', class: 'col-md-3 control-label')
             .col-md-9
-              = text_field_tag(:name, '', class: 'form-control')
+              = text_field_tag(:name, '', class: 'form-control', id: 'player_name_field')
           .form-group
             = label_tag(:position, 'Position:', class: 'col-md-3 control-label')
             .col-md-9
-              = select_tag(:position, options_for_select(position_list), class: 'form-control')
+              = select_tag(:position, options_for_select(position_list), class: 'form-control', id: 'player_position_field')
           .form-group
             = label_tag(:dob, 'Date of Birth:', class: 'col-md-3 control-label')
             .col-md-9
-              = date_field(:dob, '', class: 'form-control')
+              = date_field(:dob, '', class: 'form-control', id: 'player_dob_field')
         .modal-footer
           %button.btn.btn-default{ type: 'button', data: { dismiss: 'modal' } }
             Close

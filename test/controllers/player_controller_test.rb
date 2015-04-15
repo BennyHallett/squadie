@@ -77,8 +77,8 @@ class PlayerControllerTest < ActionController::TestCase
     post :add, { name: 'New Player', position: 'CAM', dob: ['abcdef'] }
 
     assert_response 400
-    body = JSON.parse @response.body
-    assert_equal 'An error occurred. Please provide a valid date of birth.', body['message']
+    body = @response.body
+    assert_equal 'An error occurred. Please provide a valid date of birth.', body
 
   end
 
@@ -88,7 +88,7 @@ class PlayerControllerTest < ActionController::TestCase
     post :add, { name: 'New Player', position: 'CAM', dob: ['01/01/1990'] }
 
     assert_response 500
-    body = JSON.parse @response.body
-    assert_equal 'An unknown error occurred. Please try again.', body['message']
+    body = @response.body
+    assert_equal 'An unknown error occurred. Please try again.', body
   end
 end
